@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Calendar</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="heart-background" aria-hidden="true"></div>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero-bow hero-bow-left">🎀</div>
+      <div class="hero-bow hero-bow-right">🎀</div>
+      <div>
+        <h1>Memory Calendar</h1>
+        <p>Click any date to view memories, and explore "This day that year" for past anniversaries.</p>
+      </div>
+    </header>
+    <main class="layout">
+      <section class="panel calendar-panel">
+        <div class="calendar-header">
+          <button id="prevMonth" aria-label="Previous month">◀</button>
+          <div>
+            <p class="small-label">Current month</p>
+            <h2 id="monthLabel"></h2>
+          </div>
+          <button id="nextMonth" aria-label="Next month">▶</button>
+        </div>
+        <div class="weekday-row">
+          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+      </section>
+      <aside class="panel info-panel">
+        <div class="info-card">
+          <h3>Selected date</h3>
+          <p id="selectedLabel">No date selected</p>
+          <p id="selectedNote">Click a day to open its memories.</p>
+        </div>
+        <div class="info-card">
+          <h3>This day that year</h3>
+          <ul id="anniversaryList"></ul>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <div class="modal hidden" id="memoryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-panel">
+      <button class="close-button" id="closeModal" aria-label="Close memory details">×</button>
+      <h2 id="modalTitle">Memories</h2>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
