@@ -1,59 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Memory Calendar</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="heart-background" aria-hidden="true"></div>
-  <div class="app-shell">
-    <header class="hero">
-      <div class="hero-bow hero-bow-left">🎀</div>
-      <div class="hero-bow hero-bow-right">🎀</div>
-      <div>
-        <h1>Memory Calendar</h1>
-        <p>Click any date to view memories, and explore "This day that year" for past anniversaries.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Year Worth Remembering</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background-orb orb-one" aria-hidden="true"></div>
+    <div class="background-orb orb-two" aria-hidden="true"></div>
+    <div class="emoji-rain" id="emojiRain" aria-hidden="true"></div>
+
+    <section class="landing-screen" id="landingScreen" aria-label="Opening experience">
+      <div class="landing-card">
+        <p class="eyebrow">a private archive</p>
+        <h1>A Year Worth Remembering</h1>
+        <p class="landing-copy">
+          “You once told me you don’t remember much of our year together.
+          So I decided to find the best memories we shared.
+          Through photographs, messages, calls, little notes, screenshots, and all the tiny things we had.
+          I unfortunately can’t give you the year back, or start over all over again.
+          But maybe I can give you memories that made you pink.”
+        </p>
+        <button class="enter-button" id="enterButton" type="button">open the memory box ♡</button>
       </div>
-    </header>
-    <main class="layout">
-      <section class="panel calendar-panel">
-        <div class="calendar-header">
-          <button id="prevMonth" aria-label="Previous month">◀</button>
-          <div>
-            <p class="small-label">Current month</p>
-            <h2 id="monthLabel"></h2>
-          </div>
-          <button id="nextMonth" aria-label="Next month">▶</button>
+    </section>
+
+    <main class="archive-shell hidden" id="archiveShell">
+      <header class="archive-header">
+        <div>
+          <p class="eyebrow">a gentle place to return to</p>
+          <h2>A Year Worth Remembering</h2>
         </div>
-        <div class="weekday-row">
-          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        <p class="archive-subtitle">A small archive of the good things that were.</p>
+        <p class="share-link">
+          Share this page: <a href="https://jaskiratgujral.github.io/A-Year-To-Remember/" target="_blank" rel="noopener noreferrer">https://jaskiratgujral.github.io/A-Year-To-Remember/</a>
+        </p>
+      </header>
+
+      <section class="today-card" id="todayCard" aria-live="polite"></section>
+
+      <section class="calendar-card" aria-labelledby="calendarTitle">
+        <div class="calendar-toolbar">
+          <button id="prevMonth" class="nav-button" type="button" aria-label="Previous month">←</button>
+          <div class="calendar-heading">
+            <p class="eyebrow">memory calendar</p>
+            <h3 id="calendarTitle">May 2025</h3>
+          </div>
+          <button id="nextMonth" class="nav-button" type="button" aria-label="Next month">→</button>
+        </div>
+
+        <div class="weekday-row" aria-hidden="true">
+          <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
         </div>
         <div class="calendar-grid" id="calendarGrid"></div>
       </section>
-      <aside class="panel info-panel">
-        <div class="info-card">
-          <h3>Selected date</h3>
-          <p id="selectedLabel">No date selected</p>
-          <p id="selectedNote">Click a day to open its memories.</p>
+
+      <section class="letter-section" aria-labelledby="letterTitle">
+        <div class="letter-card">
+          <p class="eyebrow">some things don’t fit inside a regular calendar that gets tossed out at the end of the year</p>
+          <h3 id="letterTitle">You deserve to remember the good parts</h3>
+          <p>
+            I want to give you something gentle and soft, something that could sit quietly beside the harder parts of the year.
+            Not to ask for anything. Not to make you remember everything. Just a reminder of the good that survived and thrived.
+            and I kept them because they mattered, and because you matter.
+          </p>
+          <p>
+            If you ever want to come back here, you can. No pressure, no need to answer anything. Just a little place to find a warm memory.
+          </p>
         </div>
-        <div class="info-card">
-          <h3>This day that year</h3>
-          <ul id="anniversaryList"></ul>
+      </section>
+
+      <section class="game-card" aria-labelledby="gameTitle">
+        <div class="game-intro">
+          <p class="eyebrow">a tiny discovery</p>
+          <h3 id="gameTitle">Pick a bow</h3>
+          <p>Choose one ribbon and see what it reveals.</p>
         </div>
-      </aside>
+        <div class="bows" id="bows"></div>
+        <p class="game-message" id="gameMessage">You are the cutest lady alive</p>
+      </section>
     </main>
-  </div>
 
-  <div class="modal hidden" id="memoryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-panel">
-      <button class="close-button" id="closeModal" aria-label="Close memory details">×</button>
-      <h2 id="modalTitle">Memories</h2>
-      <div id="modalBody"></div>
+    <div class="modal hidden" id="memoryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-panel">
+        <button class="close-button" id="closeModal" type="button" aria-label="Close memory">×</button>
+        <div id="modalContent"></div>
+      </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
